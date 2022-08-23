@@ -31,7 +31,7 @@ def get_weather():
   return weather['weather'], math.floor(weather['temp'])
 
 def get_count():
-  start_dat = '2019-05-20'
+  start_dat = '2021-05-09'
   delta = today - datetime.strptime(start_dat, "%Y-%m-%d")
   # delta = datetime.now()
   return delta.days
@@ -67,9 +67,9 @@ res = wm.send_template(user_id, template_id, data)
 print(res)
 
 
-# 今日天气 :{{weather.DATA}}
-# 当前温度 :{{temperature.DATA}}℃
-# 我们相识了:{{love_days.DATA}}天
-# 还有{{birthday_left.DATA}}生日
+# 今日天气 :  {{weather.DATA}}
+# 当前温度 :  {{temperature.DATA}}℃
+# 我们相识了{{love_days.DATA}}天
+# 还有{{birthday_left.DATA}}天生日
 # 每日一句
 # {{words.DATA}}
