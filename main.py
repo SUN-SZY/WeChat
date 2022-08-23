@@ -7,7 +7,7 @@ import os
 import random
 
 
-today = datetime.now()
+today = datetime.now().strftime("%Y-%m-%d")
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
@@ -30,8 +30,8 @@ def get_weather():
   return weather['weather'], math.floor(weather['temp'])
 
 def get_count():
-  # delta = today - datetime.strptime(start_date, "%Y-%m-%d")
-  delta = datetime.now()
+  delta = today - datetime.strptime(start_date, "%Y-%m-%d")
+  # delta = datetime.now()
   return delta.days
 
 def get_birthday():
@@ -57,9 +57,17 @@ wea, temperature = get_weather()
 data = {
   "weather":{"value":wea},
   "temperature":{"value":temperature},
-  # "love_days":{"value":get_count()},
-  # "birthday_left":{"value":get_birthday()},
+  "love_days":{"value":get_count()},
+  "birthday_left":{"value":get_birthday()},
   "words":{"value":get_words(), "color":get_random_color()}
 }
 res = wm.send_template(user_id, template_id, data)
 print(res)
+
+
+# 今日天气 :{{weather.DATA}}
+# 当前温度 :{{temperature.DATA}}℃
+# 我们相识了:{{love_days.DATA}}天
+# 还有{{birthday_left.DATA}}生日
+# 每日一句
+# {{words.DATA}}
