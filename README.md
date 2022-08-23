@@ -6,7 +6,7 @@
 - TEMPLATE_ID
 - START_DATE
   - %Y-%m-%d
-  - 2022-8-23
+  - 2022-08-23
 
 - CITY
   -  支持中文 or 经纬度 
